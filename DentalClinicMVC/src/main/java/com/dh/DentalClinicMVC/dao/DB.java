@@ -16,6 +16,30 @@ public class DB {
 
     private static final String PASSWORD ="sa";
 
+    //CREACION DE LAS CONSTANTES PARA LAS TABLAS
+
+    private static final String SQL_DROP_CREATE_ADDRESSES = "DROP TABLE IF EXISTS " +
+            "ADDRESSES; CREATE TABLE ADDRESSES (ID INT AUTO_INCREMENT PRIMARY KEY," +
+            " STREET VARCHAR(100) NOT NULL," +
+            " NUMBER INT  NOT NULL," +
+            " LOCATION VARCHAR(100) NOT NULL," +
+            " PROVINCE VARCHAR(100) NOT NULL)";
+
+    private static final String SQL_DROP_CREATE_PATIENT = "DROP TABLE IF EXISTS " +
+            "PATIENT; CREATE TABLE PATIENT (ID INT AUTO_INCREMENT PRIMARY KEY," +
+            " NAME VARCHAR(100) NOT NULL," +
+            " LAST_NAME VARCHAR(100) NOT NULL," +
+            " CARD_IDENTITY INT NOT NULL," +
+            " ADMISSION_OF_DATE DATE NOT NULL," +
+            " ADDRESS_ID INT NOT NULL)";
+
+    private static final String SQL_DROP_CREATE_DENTIST = "DROP TABLE IF EXISTS " +
+            "DENTIST; CREATE TABLE DENTIST (ID INT AUTO_INCREMENT PRIMARY KEY," +
+            " REGISTRATION INT NOT NULL," +
+            " NAME VARCHAR(100) NOT NULL," +
+            " LAST_NAME VARCHAR(100) NOT NULL)";
+
+
     // CONEXION A BASE DE DATOS
     public static Connection getConnectioin() throws Exception{
         Class.forName(DRIVER);
@@ -29,9 +53,19 @@ public class DB {
         try{
             connection = getConnectioin();
             Statement statement = connection.createStatement();
+            //EJECUTAR LAS ORDENES SQL
+            statement.execute(SQL_DROP_CREATE_ADDRESSES);
+            statement.execute(SQL_DROP_CREATE_PATIENT);
+            statement.execute(SQL_DROP_CREATE_DENTIST);
 
         } catch (Exception e){
             e.printStackTrace();
+        } finally {
+            try{
+                connection.close();
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
     }
 }
