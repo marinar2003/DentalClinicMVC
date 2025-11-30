@@ -39,6 +39,14 @@ public class DB {
             " NAME VARCHAR(100) NOT NULL," +
             " LAST_NAME VARCHAR(100) NOT NULL)";
 
+    //INSERTAR VALORES PREDETERMINADOS EN LAS TABLAS
+        private static final String SQL_INSERT = "INSERT TO ADDRESSES (STREET, NUMBER, LOCATION, PROVINCE) VALUES" +
+            " ('Calle A', 101, 'Laboulaye', 'Córdoba');" +
+            " INSERT TO PATIENT (NAME, LAST_NAME, CARD_IDENTITY, ADMISSION_OF_DATE, ADDRESS_ID) VALUES" +
+            " ('Marina', 'Revol', 35258777, '2025-11-30',1);" +
+            " INSERT TO DENTIST (REGISTRATION, NAME, LAST_NAME) VALUES" +
+            " (1234, 'Juan', 'Muela')";
+
 
     // CONEXION A BASE DE DATOS
     public static Connection getConnectioin() throws Exception{
@@ -57,6 +65,7 @@ public class DB {
             statement.execute(SQL_DROP_CREATE_ADDRESSES);
             statement.execute(SQL_DROP_CREATE_PATIENT);
             statement.execute(SQL_DROP_CREATE_DENTIST);
+            statement.execute(SQL_INSERT);
 
         } catch (Exception e){
             e.printStackTrace();
