@@ -12,12 +12,12 @@ public class Address {
 
     private String province;
 
-    public Address(Integer id, String province, String location, Integer number, String street) {
+    public Address(Integer id, String street, Integer number, String location, String province) {
         this.id = id;
-        this.province = province;
-        this.location = location;
-        this.number = number;
         this.street = street;
+        this.number = number;
+        this.location = location;
+        this.province = province;
     }
 
     public Address(String street, Integer number, String location, String province) {

@@ -6,11 +6,22 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AddressDao implements IDao<Address> {
 
-    public static final String SQL_INSERT = "INSERT TO ADDRESSES (STREET, NUMBER, LOCATION, PROVINCE) VALUES (?,?,?,?)";
+    //cargar direccion
+    private static final String SQL_INSERT = "INSERT TO ADDRESSES (STREET, NUMBER, LOCATION, PROVINCE) VALUES (?,?,?,?)";
+    //buscar por id
+    private static final String SQL_SELECT_ID = "SELECT * FROM ADDRESSES WHERE ID=?";
+    //actualizar
+    private static final String SQL_UPDATE = "UPDATE ADDRESSES SET STREET=?, NUMBER=?, LOCATION=?, PROVINCE=? WHERE ID=?";
+    //borrar
+    private static final String SQL_DELETE = "DELETE FROM ADDRESSES WHERE ID=?";
+    //Listar todos
+    private static final String SQL_SELECT_ALL = "SELECT * FROM ADDRESSES";
+
 
     //GUARDAR UN DOMICILIO
     @Override
@@ -42,26 +53,117 @@ public class AddressDao implements IDao<Address> {
             }
 
         }
-        return null;
+        return address;
     }
 
+    //BUSCAR POR ID
     @Override
     public Address findById(Integer id) {
-        return null;
+        Connection connection = null;
+        Address address = null;
+
+        try{
+
+            connection = DB.getConnectioin();
+            PreparedStatement ps= connection.prepareStatement(SQL_SELECT_ID);
+            ps.setInt(1,id);
+
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                //completamos el domicilio
+                address = new Address(rs.getInt(1), rs.getString(2), rs.getInt(3),
+                        rs.getString(4), rs.getString(5));
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+        } catch (Exception e){
+                e.printStackTrace();
+        }
+        return address;
+     }
     }
 
+    //ACTUALIZAR
     @Override
     public void update(Address address) {
 
+        Connection connection = null;
+
+        try {
+            connection = DB.getConnectioin();
+            PreparedStatement ps = connection.prepareStatement(SQL_UPDATE);
+            ps.setString(1, address.getStreet());
+            ps.setInt(2, address.getNumber());
+            ps.setString(3, address.getLocation());
+            ps.setString(4, address.getProvince());
+            ps.setInt(5, address.getId());
+            ps.execute();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
+    //BORRAR
     @Override
     public void delete(Integer id) {
+        Connection connection = null;
 
+        try{
+
+            connection = DB.getConnectioin();
+            PreparedStatement ps = connection.prepareStatement(SQL_DELETE);
+            ps.setInt(1, id);
+            ps.execute();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
     public List<Address> findAll() {
-        return List.of();
+        Connection connection = null;
+        List<Address> addresses = new ArrayList<>();
+        Address address = null;
+
+        try{
+
+            connection = DB.getConnectioin();
+            PreparedStatement ps = connection.prepareStatement(SQL_SELECT_ALL);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()){
+                //volver a completar el domicilio
+                address = new Address(rs.getInt(1), rs.getString(2), rs.getInt(3),
+                        rs.getString(4), rs.getString(5));
+                //incorporar el domicilio a la lista
+                addresses.add(address);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return addresses;
     }
 }
