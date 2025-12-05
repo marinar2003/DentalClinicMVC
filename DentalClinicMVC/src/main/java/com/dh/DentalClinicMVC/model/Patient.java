@@ -16,13 +16,13 @@ public class Patient {
 
     private Address address;
 
-    public Patient(Address address, LocalDate admissionOfDate, Integer cardIdentity, String lastName, String name, Integer id) {
-        this.address = address;
-        this.admissionOfDate = admissionOfDate;
-        this.cardIdentity = cardIdentity;
-        this.lastName = lastName;
-        this.name = name;
+    public Patient(Integer id, String name,String lastName,Integer cardIdentity, LocalDate admissionOfDate,Address address ) {
         this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.cardIdentity = cardIdentity;
+        this.admissionOfDate = admissionOfDate;
+        this.address = address;
     }
 
     public Patient(Address address, LocalDate admissionOfDate, Integer cardIdentity, String lastName, String name) {

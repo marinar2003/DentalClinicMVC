@@ -51,7 +51,6 @@ public class AddressDao implements IDao<Address> {
             } catch (Exception e){
                 e.printStackTrace();
             }
-
         }
         return address;
     }
