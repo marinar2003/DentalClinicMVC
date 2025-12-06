@@ -14,4 +14,6 @@ public interface IDao <T>{
     void delete (Integer id);
 
     List<T> findAll();
+
+    T findByString (String value);
 }

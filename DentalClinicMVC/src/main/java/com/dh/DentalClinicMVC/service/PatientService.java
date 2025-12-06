@@ -36,4 +36,8 @@ public class PatientService {
         return patientIDao.findAll();
     }
 
+    public Patient findByEmail(String email){
+        return patientIDao.findByString(email);
+    }
+
 }

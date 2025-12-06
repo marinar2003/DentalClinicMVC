@@ -29,9 +29,11 @@ public class DB {
             "PATIENT; CREATE TABLE PATIENT (ID INT AUTO_INCREMENT PRIMARY KEY," +
             " NAME VARCHAR(100) NOT NULL," +
             " LAST_NAME VARCHAR(100) NOT NULL," +
+            " EMAIL VARCHAR(100) NOT NULL," +
             " CARD_IDENTITY INT NOT NULL," +
             " ADMISSION_OF_DATE DATE NOT NULL," +
             " ADDRESS_ID INT NOT NULL)";
+
 
     private static final String SQL_DROP_CREATE_DENTIST = "DROP TABLE IF EXISTS " +
             "DENTIST; CREATE TABLE DENTIST (ID INT AUTO_INCREMENT PRIMARY KEY," +
@@ -42,8 +44,8 @@ public class DB {
     //INSERTAR VALORES PREDETERMINADOS EN LAS TABLAS
         private static final String SQL_INSERT = "INSERT TO ADDRESSES (STREET, NUMBER, LOCATION, PROVINCE) VALUES" +
             " ('Calle A', 101, 'Laboulaye', 'Córdoba');" +
-            " INSERT TO PATIENT (NAME, LAST_NAME, CARD_IDENTITY, ADMISSION_OF_DATE, ADDRESS_ID) VALUES" +
-            " ('Marina', 'Revol', 35258777, '2025-11-30',1);" +
+            " INSERT TO PATIENT (NAME, LAST_NAME, EMAILM  CARD_IDENTITY, ADMISSION_OF_DATE, ADDRESS_ID) VALUES" +
+            " ('Marina', 'Revol', 'mnrevol50@gmial.com', 35258777, '2025-11-30',1);" +
             " INSERT TO DENTIST (REGISTRATION, NAME, LAST_NAME) VALUES" +
             " (1234, 'Juan', 'Muela')";
 

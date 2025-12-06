@@ -165,4 +165,9 @@ public class AddressDao implements IDao<Address> {
         }
         return addresses;
     }
+
+    @Override
+    public Address findByString(String value) {
+        return null;
+    }
 }

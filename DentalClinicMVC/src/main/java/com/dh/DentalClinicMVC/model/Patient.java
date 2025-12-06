@@ -10,27 +10,34 @@ public class Patient {
 
     private String lastName;
 
+    private String email;
+
     private Integer cardIdentity;
 
     private LocalDate admissionOfDate;
 
     private Address address;
 
-    public Patient(Integer id, String name,String lastName,Integer cardIdentity, LocalDate admissionOfDate,Address address ) {
+
+
+    public Patient(Integer id, String name,String lastName,String email, Integer cardIdentity, LocalDate admissionOfDate,Address address ) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
+        this.email = email;
         this.cardIdentity = cardIdentity;
         this.admissionOfDate = admissionOfDate;
         this.address = address;
+
     }
 
-    public Patient(Address address, LocalDate admissionOfDate, Integer cardIdentity, String lastName, String name) {
-        this.address = address;
-        this.admissionOfDate = admissionOfDate;
-        this.cardIdentity = cardIdentity;
-        this.lastName = lastName;
+    public Patient(String name, String lastName, String email, Integer cardIdentity, LocalDate admissionOfDate, Address address) {
         this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.cardIdentity = cardIdentity;
+        this.admissionOfDate = admissionOfDate;
+        this.address = address;
     }
 
     public Integer getId() {
@@ -79,5 +86,13 @@ public class Patient {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
