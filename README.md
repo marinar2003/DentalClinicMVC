@@ -1,34 +1,57 @@
-Este proyecto es un sistema de gestión para una clínica odontológica, desarrollado con Spring Boot utilizando una arquitectura basada en MVC (Model-View-Controller). 
-El objetivo principal es la administración de datos de pacientes, odontólogos y sus respectivas direcciones, con una base de datos local para la persistencia de datos.
 
---------------------------------------------------------------------------------------------------
+Dental Clinic MVC - Gestión de Clínica Odontológica
 
-Tecnologías y Componentes Clave
+Este proyecto se encuentra actualmente en desarrollo. La estructura inicial (Modelos y conexión a DB) está implementada, en proceso de crear la capa de persistencia (DAO) y las capas de servicio y controlador.
 
-FrameworkSpring Boot:
-Facilita la configuración y ejecución de la aplicación.
+Descripción General
+Este es un sistema de gestión para una clínica odontológica desarrollado con Spring Boot. Sigue la arquitectura MVC (Model-View-Controller) y utiliza una base de datos H2 para la persistencia de datos.
 
-ArquitecturaMVC (Model-View-Controller):
-Separa la lógica de negocio, los datos (Patient, Dentist) y la interacción del usuario.
+Tecnologías y Estructura
 
-Base de DatosH2 Database (DB.java): 
-Base de datos local en memoria/archivo para desarrollo y pruebas.
+Framework Principal: Spring Boot
+Lenguaje: Java
+Base de Datos: H2 Database (local/en memoria)
+Persistencia: JDBC (a través de la clase DB.java)
+Estructura: Modelos de Dominio (Patient, Dentist, Address) definidos.
 
-ModelosJava POJOs (Patient.java, Dentist.java, Address.java): 
-Representan las entidades principales del sistema.
+Estructura Implementada
+Los siguientes componentes ya han sido definidos e integrados:
 
-PersistenciaJava SQL (DB.java DAO Layer): 
-Conexión directa a H2 y manejo de las operaciones de datos.
+1. Modelos 
+Patient.java
+Dentist.java
+Address.java
 
---------------------------------------------------------------------------------------------------
-Estructura del Proyecto (Modelos Implementados)
+Base de Datos e Inicialización
+La clase DB.java maneja la conexión a la base de datos H2. La creación de tablas se invoca al inicio de la aplicación:
 
-Por ahora, los modelos de datos esenciales para la clínica están definidos:
+public static void main(String[] args) {
+    DB.createTables(); // <-- Inicializa la estructura de la base de datos
+    SpringApplication.run(DentalClinicMvcApplication.class, args);
+}
 
-Patient.java: Incluye nombre, apellido, DNI (cardIdentity), fecha de admisión (admissionOfDate) y su asociación con una Address.
+Configuración y Ejecución Local
+Clonar el Repositorio:
 
-Address.java: Define la ubicación con calle, número, localidad y provincia.
+git clone https://github.com/marinar2003/DentalClinicMVC.git
+cd DentalClinicMVC
 
-Dentist.java: Incluye nombre, apellido y número de matrícula (registration).
+Base de Datos: El proyecto se conecta automáticamente a H2. La base de datos se inicializa con la llamada a DB.createTables() al iniciar.
 
-DB.java: Contiene la lógica para la conexión a la base de datos H2.
+Ejecutar la Aplicación:
+
+./mvnw spring-boot:run 
+La aplicación estará disponible en http://localhost:8080.
+
+Próximos Avances Planificados
+
+Para la siguiente fase del desarrollo, se planea:
+
+Completar la Capa DAO: 
+Implementar la lógica SQL completa (CREATE TABLE, INSERT, SELECT, UPDATE, DELETE) en la capa de acceso a datos.
+
+Creación de la Capa de Servicios: 
+Añadir las clases de servicio para encapsular la lógica de negocio.
+
+Desarrollo de Controladores: 
+Exponer los endpoints REST o las vistas MVC para interactuar con los datos de pacientes y odontólogos.
