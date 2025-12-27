@@ -6,6 +6,7 @@ import com.dh.DentalClinicMVC.model.Patient;
 
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DentistDao implements IDao<Dentist>{
@@ -16,6 +17,10 @@ public class DentistDao implements IDao<Dentist>{
     private static final String SQL_SELECT_ID = "SELECT * FROM DENTIST WHERE ID=?";
 
     private static final String SQL_UPDATE = "UPDATE DENTIST SET REGISTRATION=?, NAME=?, LAST_NAME=? WHERE ID=?";
+
+    private static final String SQL_DELETE = "DELETE FROM DENTIST WHERE ID=?";
+
+    private static final String SQL_SELECT_ALL = "SELECT * FROM DENTIST";
 
     @Override
     public Dentist save(Dentist dentist) {
@@ -98,12 +103,52 @@ public class DentistDao implements IDao<Dentist>{
 
     @Override
     public void delete(Integer id) {
+        Connection connection = null;
+
+        try {
+            connection = DB.getConnection();
+            PreparedStatement ps = connection.prepareStatement(SQL_DELETE);
+            ps.setInt(1, id);
+            ps.execute();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
     }
 
     @Override
     public List<Dentist> findAll() {
-        return List.of();
+
+        Connection connection = null;
+        Dentist dentist = null;
+        List<Dentist> dentistList = new ArrayList<>();
+
+        try {
+            connection = DB.getConnection();
+            PreparedStatement ps = connection.prepareStatement(SQL_SELECT_ALL);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                 dentist = new Dentist(rs.getInt(1), rs.getInt(2), rs.getString(3),rs.getString(4));
+                dentistList.add(dentist);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return dentistList;
     }
 
     @Override
