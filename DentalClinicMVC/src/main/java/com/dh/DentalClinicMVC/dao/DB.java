@@ -17,37 +17,38 @@ public class DB {
     private static final String PASSWORD ="sa";
 
     //CREACION DE LAS CONSTANTES PARA LAS TABLAS
+    //NO LAS CREAMOS MAS POR ESTE METODO, SINO DIRECTAMENTE POR EL SCRIPT DEL ARCHIVO CREATE.SQL
 
-    private static final String SQL_DROP_CREATE_ADDRESSES = "DROP TABLE IF EXISTS " +
-            "ADDRESSES; CREATE TABLE ADDRESSES (ID INT AUTO_INCREMENT PRIMARY KEY," +
-            " STREET VARCHAR(100) NOT NULL," +
-            " NUMBER INT  NOT NULL," +
-            " LOCATION VARCHAR(100) NOT NULL," +
-            " PROVINCE VARCHAR(100) NOT NULL)";
+    //private static final String SQL_DROP_CREATE_ADDRESSES = "DROP TABLE IF EXISTS " +
+            //"ADDRESSES; CREATE TABLE ADDRESSES (ID INT AUTO_INCREMENT PRIMARY KEY," +
+            //" STREET VARCHAR(100) NOT NULL," +
+            //" NUMBER INT  NOT NULL," +
+            //" LOCATION VARCHAR(100) NOT NULL," +
+            //" PROVINCE VARCHAR(100) NOT NULL)";
 
-    private static final String SQL_DROP_CREATE_PATIENT = "DROP TABLE IF EXISTS " +
-            "PATIENT; CREATE TABLE PATIENT (ID INT AUTO_INCREMENT PRIMARY KEY," +
-            " NAME VARCHAR(100) NOT NULL," +
-            " LAST_NAME VARCHAR(100) NOT NULL," +
-            " EMAIL VARCHAR(100) NOT NULL," +
-            " CARD_IDENTITY INT NOT NULL," +
-            " ADMISSION_OF_DATE DATE NOT NULL," +
-            " ADDRESS_ID INT NOT NULL)";
+    //private static final String SQL_DROP_CREATE_PATIENT = "DROP TABLE IF EXISTS " +
+            //"PATIENT; CREATE TABLE PATIENT (ID INT AUTO_INCREMENT PRIMARY KEY," +
+            //" NAME VARCHAR(100) NOT NULL," +
+            //" LAST_NAME VARCHAR(100) NOT NULL," +
+            //" EMAIL VARCHAR(100) NOT NULL," +
+            //" CARD_IDENTITY INT NOT NULL," +
+            //" ADMISSION_OF_DATE DATE NOT NULL," +
+            //" ADDRESS_ID INT NOT NULL)";
 
 
-    private static final String SQL_DROP_CREATE_DENTIST = "DROP TABLE IF EXISTS " +
-            "DENTIST; CREATE TABLE DENTIST (ID INT AUTO_INCREMENT PRIMARY KEY," +
-            " REGISTRATION INT NOT NULL," +
-            " NAME VARCHAR(100) NOT NULL," +
-            " LAST_NAME VARCHAR(100) NOT NULL)";
+    //private static final String SQL_DROP_CREATE_DENTIST = "DROP TABLE IF EXISTS " +
+            //"DENTIST; CREATE TABLE DENTIST (ID INT AUTO_INCREMENT PRIMARY KEY," +
+            //" REGISTRATION INT NOT NULL," +
+            //" NAME VARCHAR(100) NOT NULL," +
+            //" LAST_NAME VARCHAR(100) NOT NULL)";
 
     //INSERTAR VALORES PREDETERMINADOS EN LAS TABLAS
-        private static final String SQL_INSERT = "INSERT INTO ADDRESSES (STREET, NUMBER, LOCATION, PROVINCE) VALUES" +
-            " ('Calle A', 101, 'Laboulaye', 'Córdoba');" +
-            " INSERT INTO PATIENT (NAME, LAST_NAME, EMAIL, CARD_IDENTITY, ADMISSION_OF_DATE, ADDRESS_ID) VALUES" +
-            " ('Marina', 'Revol', 'mnrevol50@gmail.com', 35258777, '2025-11-30',1);" +
-            " INSERT INTO DENTIST (REGISTRATION, NAME, LAST_NAME) VALUES" +
-            " (1234, 'Juan', 'Muela')";
+        //private static final String SQL_INSERT = "INSERT INTO ADDRESSES (STREET, NUMBER, LOCATION, PROVINCE) VALUES" +
+           // " ('Calle A', 101, 'Laboulaye', 'Córdoba');" +
+           // " INSERT INTO PATIENT (NAME, LAST_NAME, EMAIL, CARD_IDENTITY, ADMISSION_OF_DATE, ADDRESS_ID) VALUES" +
+           // " ('Marina', 'Revol', 'mnrevol50@gmail.com', 35258777, '2025-11-30',1);" +
+           // " INSERT INTO DENTIST (REGISTRATION, NAME, LAST_NAME) VALUES" +
+           // " (1234, 'Juan', 'Muela')";
 
 
     // CONEXION A BASE DE DATOS
@@ -64,10 +65,10 @@ public class DB {
             connection = getConnection();
             Statement statement = connection.createStatement();
             //EJECUTAR LAS ORDENES SQL
-            statement.execute(SQL_DROP_CREATE_ADDRESSES);
-            statement.execute(SQL_DROP_CREATE_PATIENT);
-            statement.execute(SQL_DROP_CREATE_DENTIST);
-            statement.execute(SQL_INSERT);
+            //statement.execute(SQL_DROP_CREATE_ADDRESSES);
+            //statement.execute(SQL_DROP_CREATE_PATIENT);
+            //statement.execute(SQL_DROP_CREATE_DENTIST);
+            //statement.execute(SQL_INSERT);
 
         } catch (Exception e){
             e.printStackTrace();
