@@ -1,19 +1,34 @@
 package com.dh.DentalClinicMVC.dao;
 
 import com.dh.DentalClinicMVC.model.Dentist;
-import com.sun.jdi.connect.spi.Connection;
 
+
+import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.List;
 
 public class DentistDao implements IDao<Dentist>{
 
+    private static final String SQL_INSERT = "INSERT INTO DENTIST" +
+            "(REGISTRATION, NAME, LAST_NAME) VALUES (?,?,?)";
+
     @Override
     public Dentist save(Dentist dentist) {
         Connection connection = null;
-
         try{
+            connection = DB.getConnection();
+            PreparedStatement ps = connection.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1,dentist.getRegistration());
+            ps.setString(2, dentist.getName());
+            ps.setString(3, dentist.getLastName());
+            ps.execute();
 
+            ResultSet rs = ps.getGeneratedKeys();
+            while(rs.next()){
+                dentist.setId(rs.getInt(1));
+            }
 
         }catch(Exception e){
             e.printStackTrace();
@@ -24,7 +39,7 @@ public class DentistDao implements IDao<Dentist>{
               e.printStackTrace();
           }
         }
-        return null;
+        return dentist;
     }
 
     @Override
