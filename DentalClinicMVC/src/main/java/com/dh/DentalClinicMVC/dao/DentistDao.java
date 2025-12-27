@@ -1,18 +1,21 @@
 package com.dh.DentalClinicMVC.dao;
 
+import com.dh.DentalClinicMVC.model.Address;
 import com.dh.DentalClinicMVC.model.Dentist;
+import com.dh.DentalClinicMVC.model.Patient;
 
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.List;
 
 public class DentistDao implements IDao<Dentist>{
 
     private static final String SQL_INSERT = "INSERT INTO DENTIST" +
             "(REGISTRATION, NAME, LAST_NAME) VALUES (?,?,?)";
+
+    private static final String SQL_SELECT_ID = "SELECT * FROM DENTIST WHERE ID=?";
+
+    private static final String SQL_UPDATE = "UPDATE DENTIST SET REGISTRATION=?, NAME=?, LAST_NAME=? WHERE ID=?";
 
     @Override
     public Dentist save(Dentist dentist) {
@@ -44,12 +47,53 @@ public class DentistDao implements IDao<Dentist>{
 
     @Override
     public Dentist findById(Integer id) {
-        return null;
+        Connection connection = null;
+        Dentist dentist = null;
+
+        try {
+            connection = DB.getConnection();
+            PreparedStatement ps = connection.prepareStatement(SQL_SELECT_ID);
+            ps.setInt(1, id); //setear el id
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                dentist = new Dentist(rs.getInt(1), rs.getInt(2),rs.getString(3),rs.getString(4));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return dentist;
     }
 
     @Override
     public void update(Dentist dentist) {
+        Connection connection = null;
 
+        try {
+            connection = DB.getConnection();
+            PreparedStatement ps = connection.prepareStatement(SQL_UPDATE);
+            ps.setInt(1,dentist.getRegistration());
+            ps.setString(2, dentist.getName());
+            ps.setString(3, dentist.getLastName());
+            ps.setInt(4, dentist.getId());
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override

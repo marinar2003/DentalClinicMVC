@@ -17,7 +17,7 @@ public class Dentist {
         this.registration = registration;
     }
 
-    public Dentist(Integer registration, String name, String lastName) {
+    public Dentist(int anInt, Integer registration, String name, String lastName) {
         this.registration = registration;
         this.name = name;
         this.lastName = lastName;
