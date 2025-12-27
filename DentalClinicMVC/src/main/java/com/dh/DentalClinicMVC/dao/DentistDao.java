@@ -46,4 +46,9 @@ public class DentistDao implements IDao<Dentist>{
     public List<Dentist> findAll() {
         return List.of();
     }
+
+    @Override
+    public Dentist findByString(String value) {
+        return null;
+    }
 }

@@ -42,16 +42,16 @@ public class DB {
             " LAST_NAME VARCHAR(100) NOT NULL)";
 
     //INSERTAR VALORES PREDETERMINADOS EN LAS TABLAS
-        private static final String SQL_INSERT = "INSERT TO ADDRESSES (STREET, NUMBER, LOCATION, PROVINCE) VALUES" +
+        private static final String SQL_INSERT = "INSERT INTO ADDRESSES (STREET, NUMBER, LOCATION, PROVINCE) VALUES" +
             " ('Calle A', 101, 'Laboulaye', 'Córdoba');" +
-            " INSERT TO PATIENT (NAME, LAST_NAME, EMAILM  CARD_IDENTITY, ADMISSION_OF_DATE, ADDRESS_ID) VALUES" +
-            " ('Marina', 'Revol', 'mnrevol50@gmial.com', 35258777, '2025-11-30',1);" +
-            " INSERT TO DENTIST (REGISTRATION, NAME, LAST_NAME) VALUES" +
+            " INSERT INTO PATIENT (NAME, LAST_NAME, EMAIL, CARD_IDENTITY, ADMISSION_OF_DATE, ADDRESS_ID) VALUES" +
+            " ('Marina', 'Revol', 'mnrevol50@gmail.com', 35258777, '2025-11-30',1);" +
+            " INSERT INTO DENTIST (REGISTRATION, NAME, LAST_NAME) VALUES" +
             " (1234, 'Juan', 'Muela')";
 
 
     // CONEXION A BASE DE DATOS
-    public static Connection getConnectioin() throws Exception{
+    public static Connection getConnection() throws Exception{
         Class.forName(DRIVER);
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
@@ -61,7 +61,7 @@ public class DB {
         Connection connection = null;
 
         try{
-            connection = getConnectioin();
+            connection = getConnection();
             Statement statement = connection.createStatement();
             //EJECUTAR LAS ORDENES SQL
             statement.execute(SQL_DROP_CREATE_ADDRESSES);

@@ -30,7 +30,7 @@ public class AddressDao implements IDao<Address> {
         Connection connection = null;
 
         try {
-            connection = DB.getConnectioin();
+            connection = DB.getConnection();
             PreparedStatement ps = connection.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, address.getStreet());
             ps.setInt(2,address.getNumber());
@@ -63,7 +63,7 @@ public class AddressDao implements IDao<Address> {
 
         try{
 
-            connection = DB.getConnectioin();
+            connection = DB.getConnection();
             PreparedStatement ps= connection.prepareStatement(SQL_SELECT_ID);
             ps.setInt(1,id);
 
@@ -92,7 +92,7 @@ public class AddressDao implements IDao<Address> {
         Connection connection = null;
 
         try {
-            connection = DB.getConnectioin();
+            connection = DB.getConnection();
             PreparedStatement ps = connection.prepareStatement(SQL_UPDATE);
             ps.setString(1, address.getStreet());
             ps.setInt(2, address.getNumber());
@@ -119,7 +119,7 @@ public class AddressDao implements IDao<Address> {
 
         try{
 
-            connection = DB.getConnectioin();
+            connection = DB.getConnection();
             PreparedStatement ps = connection.prepareStatement(SQL_DELETE);
             ps.setInt(1, id);
             ps.execute();
@@ -143,7 +143,7 @@ public class AddressDao implements IDao<Address> {
 
         try{
 
-            connection = DB.getConnectioin();
+            connection = DB.getConnection();
             PreparedStatement ps = connection.prepareStatement(SQL_SELECT_ALL);
             ResultSet rs = ps.executeQuery();
 
