@@ -10,7 +10,7 @@ import java.util.List;
 
 public class PatientDao implements IDao<Patient> {
     //CREAR UN PACIENTE
-    private static final String SQL_INSERT = "INSERT TO PATIENT (NAME, LAST_NAME, EMAIL, CARD_IDENTITY, ADMISSION_OF_DATE, ADDRESS_ID)" +
+    private static final String SQL_INSERT = "INSERT INTO PATIENT (NAME, LAST_NAME, EMAIL, CARD_IDENTITY, ADMISSION_OF_DATE, ADDRESS_ID)" +
             " VALUES (?,?,?,?,?,?)";
     //BUSCAR POR ID
     private static final String SQL_SELECT_ID = "SELECT * FROM PATIENT WHERE ID=?";

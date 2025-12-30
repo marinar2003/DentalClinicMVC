@@ -12,6 +12,9 @@ public class Address {
 
     private String province;
 
+    public Address() {
+    }
+
     public Address(Integer id, String street, Integer number, String location, String province) {
         this.id = id;
         this.street = street;

@@ -38,3 +38,23 @@ INTO ADDRESSES (STREET, NUMBER, LOCATION, PROVINCE) VALUES ('Calle A', 101, 'Lab
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT [*]TO PATIENT (NAME, LAST_NAME, EMAIL, CARD_IDENTITY, ADMISSION_OF_DATE, ADDRESS_ID) VALUES ('Marina', 'Revol', 'mnrevol50@gmial.com', 35258777, '2025-11-30',1); INSERT TO DENTIST (REGISTRATION, NAME, LAST_NAME) VALUES (1234, 'Juan', 'Muela')"; se esperaba "INTO"
 Syntax error in SQL statement "INSERT [*]TO PATIENT (NAME, LAST_NAME, EMAIL, CARD_IDENTITY, ADMISSION_OF_DATE, ADDRESS_ID) VALUES ('Marina', 'Revol', 'mnrevol50@gmial.com', 35258777, '2025-11-30',1); INSERT TO DENTIST (REGISTRATION, NAME, LAST_NAME) VALUES (1234, 'Juan', 'Muela')"; expected "INTO"; SQL statement:
 INSERT TO PATIENT (NAME, LAST_NAME, EMAIL, CARD_IDENTITY, ADMISSION_OF_DATE, ADDRESS_ID) VALUES ('Marina', 'Revol', 'mnrevol50@gmial.com', 35258777, '2025-11-30',1); INSERT TO DENTIST (REGISTRATION, NAME, LAST_NAME) VALUES (1234, 'Juan', 'Muela') [42001-240]
+2025-12-29 07:29:29.971116-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT [*]TO ADDRESSES (STREET, NUMBER, LOCATION, PROVINCE) VALUES (?,?,?,?)"; se esperaba "INTO"
+Syntax error in SQL statement "INSERT [*]TO ADDRESSES (STREET, NUMBER, LOCATION, PROVINCE) VALUES (?,?,?,?)"; expected "INTO"; SQL statement:
+INSERT TO ADDRESSES (STREET, NUMBER, LOCATION, PROVINCE) VALUES (?,?,?,?) [42001-240]
+2025-12-29 07:29:30.277958-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT [*]TO PATIENT (NAME, LAST_NAME, EMAIL, CARD_IDENTITY, ADMISSION_OF_DATE, ADDRESS_ID) VALUES (?,?,?,?,?,?)"; se esperaba "INTO"
+Syntax error in SQL statement "INSERT [*]TO PATIENT (NAME, LAST_NAME, EMAIL, CARD_IDENTITY, ADMISSION_OF_DATE, ADDRESS_ID) VALUES (?,?,?,?,?,?)"; expected "INTO"; SQL statement:
+INSERT TO PATIENT (NAME, LAST_NAME, EMAIL, CARD_IDENTITY, ADMISSION_OF_DATE, ADDRESS_ID) VALUES (?,?,?,?,?,?) [42001-240]
+2025-12-29 07:34:02.140610-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT [*]TO ADDRESSES (STREET, NUMBER, LOCATION, PROVINCE) VALUES (?,?,?,?)"; se esperaba "INTO"
+Syntax error in SQL statement "INSERT [*]TO ADDRESSES (STREET, NUMBER, LOCATION, PROVINCE) VALUES (?,?,?,?)"; expected "INTO"; SQL statement:
+INSERT TO ADDRESSES (STREET, NUMBER, LOCATION, PROVINCE) VALUES (?,?,?,?) [42001-240]
+2025-12-29 07:34:02.211127-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT [*]TO PATIENT (NAME, LAST_NAME, EMAIL, CARD_IDENTITY, ADMISSION_OF_DATE, ADDRESS_ID) VALUES (?,?,?,?,?,?)"; se esperaba "INTO"
+Syntax error in SQL statement "INSERT [*]TO PATIENT (NAME, LAST_NAME, EMAIL, CARD_IDENTITY, ADMISSION_OF_DATE, ADDRESS_ID) VALUES (?,?,?,?,?,?)"; expected "INTO"; SQL statement:
+INSERT TO PATIENT (NAME, LAST_NAME, EMAIL, CARD_IDENTITY, ADMISSION_OF_DATE, ADDRESS_ID) VALUES (?,?,?,?,?,?) [42001-240]
+2025-12-29 07:37:54.920873-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT [*]TO PATIENT (NAME, LAST_NAME, EMAIL, CARD_IDENTITY, ADMISSION_OF_DATE, ADDRESS_ID) VALUES (?,?,?,?,?,?)"; se esperaba "INTO"
+Syntax error in SQL statement "INSERT [*]TO PATIENT (NAME, LAST_NAME, EMAIL, CARD_IDENTITY, ADMISSION_OF_DATE, ADDRESS_ID) VALUES (?,?,?,?,?,?)"; expected "INTO"; SQL statement:
+INSERT TO PATIENT (NAME, LAST_NAME, EMAIL, CARD_IDENTITY, ADMISSION_OF_DATE, ADDRESS_ID) VALUES (?,?,?,?,?,?) [42001-240]

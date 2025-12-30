@@ -12,7 +12,7 @@ import java.util.List;
 public class AddressDao implements IDao<Address> {
 
     //cargar direccion
-    private static final String SQL_INSERT = "INSERT TO ADDRESSES (STREET, NUMBER, LOCATION, PROVINCE) VALUES (?,?,?,?)";
+    private static final String SQL_INSERT = "INSERT INTO ADDRESSES (STREET, NUMBER, LOCATION, PROVINCE) VALUES (?,?,?,?)";
     //buscar por id
     private static final String SQL_SELECT_ID = "SELECT * FROM ADDRESSES WHERE ID=?";
     //actualizar
