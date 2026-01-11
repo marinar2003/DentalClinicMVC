@@ -10,17 +10,20 @@ public class Dentist {
 
     private String lastName;
 
-    public Dentist(Integer id, String lastName, String name, Integer registration) {
+    public Dentist(Integer id, Integer registration, String name, String lastName) {
         this.id = id;
-        this.lastName = lastName;
-        this.name = name;
         this.registration = registration;
+        this.name = name;
+        this.lastName = lastName;
     }
 
-    public Dentist(int anInt, Integer registration, String name, String lastName) {
+    public Dentist(Integer registration, String name, String lastName) {
         this.registration = registration;
         this.name = name;
         this.lastName = lastName;
+    }
+
+    public Dentist() {
     }
 
     public Integer getId() {

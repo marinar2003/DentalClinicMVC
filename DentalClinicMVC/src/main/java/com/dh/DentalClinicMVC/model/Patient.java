@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Patient {
 
-    private   Integer id;
+    private Integer id;
 
     private String name;
 

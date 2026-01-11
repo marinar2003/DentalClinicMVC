@@ -62,7 +62,7 @@ public class DentistDao implements IDao<Dentist>{
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                dentist = new Dentist(rs.getInt(1), rs.getInt(2),rs.getString(3),rs.getString(4));
+                dentist = new Dentist(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4));
             }
 
         } catch (Exception e) {

@@ -103,10 +103,18 @@ public class PatientDao implements IDao<Patient> {
             ps.setString(1, patient.getName());
             ps.setString(2, patient.getLastName());
             ps.setString(3, patient.getEmail());
-            ps.setInt(4, patient.getCardIdentity());
-            ps.setDate(5, Date.valueOf(patient.getAdmissionOfDate()));
-            ps.setInt(6, patient.getAddress().getId());
-            ps.setInt(7, patient.getId());
+            //ps.setInt(4, patient.getCardIdentity());
+            ps.setObject(4, patient.getCardIdentity());
+            //ps.setDate(5, Date.valueOf(patient.getAdmissionOfDate()));
+            ps.setObject(5, patient.getAdmissionOfDate());
+            //ps.setInt(6, patient.getAddress().getId());
+            if (patient.getAddress() != null) {
+                ps.setInt(6, patient.getAddress().getId());
+            } else {
+                ps.setNull(6, java.sql.Types.INTEGER);
+            }
+            //ps.setInt(7, patient.getId());
+            ps.setObject(7, patient.getId());
             ps.execute();
 
         } catch (Exception e) {
